@@ -20,10 +20,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-#      - name: Create .env file
-#        run: echo "$ENV_FILE" | tr '\\n' '\n' > .env
-#        env:
-#          ENV_FILE: ${{ secrets.ENV_FILE }}
+      - name: Create .env file
+        run: echo "$ENV_FILE" | tr '\\n' '\n' > .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
 
       - name: Grant permission for gradlew
         run: chmod +x ./gradlew
