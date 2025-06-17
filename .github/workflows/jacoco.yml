@@ -25,6 +25,12 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
 
+      - name: Print .env file (sensitive values masked)
+        run: |
+          echo "===== .env file contents (filtered) ====="
+          grep -v "jwt.secret" .env || true
+
+
       - name: Grant permission for gradlew
         run: chmod +x ./gradlew
 
