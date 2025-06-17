@@ -10,7 +10,6 @@ import org.springframework.core.env.Environment;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Import(SecurityConfig.class) // 테스트용 SecurityConfig 임포트
 public class ProfileCheckTest {
 
     @Autowired

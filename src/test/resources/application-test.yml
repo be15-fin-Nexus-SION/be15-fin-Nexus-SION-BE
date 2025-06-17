@@ -26,6 +26,11 @@ spring:
       schema-locations: classpath:ddl/schema.sql  # 스키마 ddl 위치
       data-locations: classpath:ddl/data.sql      # 초기 데이터 위치 (있으면)
 
+jwt:
+  secret: test-secret-key
+  expiration: 3600000
+  refresh-expiration: 86400000
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
