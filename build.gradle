@@ -119,6 +119,12 @@ jooq {
     }
 }
 
+tasks.named('generateJooq') {
+    onlyIf {
+        gradle.startParameter.taskNames.contains('generateJooq')
+    }
+}
+
 jacoco {
     toolVersion = "0.8.10"
 }
