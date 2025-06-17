@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: SION
-  profiles:
-    active: test
 
   datasource:
     driver-class-name: org.h2.Driver
