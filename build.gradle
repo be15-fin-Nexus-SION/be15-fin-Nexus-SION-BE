@@ -48,6 +48,7 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
 
+    // db
     jooqGenerator 'org.mariadb.jdbc:mariadb-java-client'
 }
 
@@ -133,5 +134,11 @@ jacocoTestReport {
         html.required = true
         xml.required = true // GitHub Actions에서 활용할 수 있도록 XML 생성
         csv.required = false
+    }
+}
+
+if (!System.getenv("CI")) {
+    tasks.named("build") {
+        dependsOn("generateJooq")
     }
 }

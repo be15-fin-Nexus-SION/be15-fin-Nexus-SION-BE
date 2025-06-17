@@ -25,12 +25,6 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
 
-      - name: Show current directory
-        run: pwd
-
-      - name: List files
-        run: ls -la
-
       - name: Grant permission for gradlew
         run: chmod +x ./gradlew
 
