@@ -80,7 +80,8 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-def env = new Properties()def envFile = file(".env")
+def env = new Properties()
+def envFile = file(".env")
 if (envFile.exists()) {
     envFile.withInputStream { stream -> env.load(stream) }
 }
