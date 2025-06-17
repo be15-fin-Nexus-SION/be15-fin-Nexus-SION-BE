@@ -25,6 +25,8 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
 
+      - name: Verify .env file content
+        run: cat .env
 
       - name: Grant permission for gradlew
         run: chmod +x ./gradlew
