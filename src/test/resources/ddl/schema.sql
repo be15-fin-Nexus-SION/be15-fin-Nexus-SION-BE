@@ -1,30 +1,3 @@
-SET
-FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `user_certificate_history`;
-DROP TABLE IF EXISTS `job`;
-DROP TABLE IF EXISTS `project_evaluation`;
-DROP TABLE IF EXISTS `project_fp_summary`;
-DROP TABLE IF EXISTS `project_function_estimate`;
-DROP TABLE IF EXISTS `initial_score`;
-DROP TABLE IF EXISTS `project`;
-DROP TABLE IF EXISTS `grade`;
-DROP TABLE IF EXISTS `project_and_job`;
-DROP TABLE IF EXISTS `client_company`;
-DROP TABLE IF EXISTS `developer_tech_stack_history`;
-DROP TABLE IF EXISTS `developer_tech_stack`;
-DROP TABLE IF EXISTS `domain`;
-DROP TABLE IF EXISTS `job_and_tech_stack`;
-DROP TABLE IF EXISTS `squad`;
-DROP TABLE IF EXISTS `tech_stack`;
-DROP TABLE IF EXISTS `user_training_history`;
-DROP TABLE IF EXISTS `training_program`;
-DROP TABLE IF EXISTS `squad_employee`;
-DROP TABLE IF EXISTS `member`;
-DROP TABLE IF EXISTS `certificate`;
-
-SET
-FOREIGN_KEY_CHECKS = 1;
-
 CREATE TABLE `user_certificate_history` (
                                             `user_certificate_history_id`	BIGINT	NOT NULL	AUTO_INCREMENT,
                                             `created_at`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
