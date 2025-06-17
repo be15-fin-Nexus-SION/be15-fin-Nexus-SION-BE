@@ -27,7 +27,7 @@ spring:
       data-locations: classpath:ddl/data.sql      # 초기 데이터 위치 (있으면)
 
 jwt:
-  secret: test-secret-key
+  secret: dGVzdC1zZWNyZXQta2V5
   expiration: 3600000
   refresh-expiration: 86400000
 
