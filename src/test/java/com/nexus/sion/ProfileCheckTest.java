@@ -10,7 +10,11 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = {
+        "jwt.secret=your-test-secret-key-in-base64",
+        "jwt.expiration=3600000",
+        "jwt.refresh-expiration=86400000"
+})
 @ActiveProfiles("test")
 public class ProfileCheckTest {
 
