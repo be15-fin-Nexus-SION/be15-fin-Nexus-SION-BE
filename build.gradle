@@ -136,7 +136,13 @@ jacoco {
 
 test {
     useJUnitPlatform()
+    // test 실행 시 프로파일 강제 설정
+    systemProperty "spring.profiles.active", "test"
     finalizedBy jacocoTestReport
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true // System.out 출력 확인용
+    }
 }
 
 jacocoTestReport {
