@@ -1,9 +1,11 @@
 package com.nexus.sion.feature.squad.query.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nexus.sion.feature.squad.query.dto.request.SquadListRequest;
-import com.nexus.sion.feature.squad.query.dto.response.SquadListResponse;
-import com.nexus.sion.feature.squad.query.service.SquadQueryService;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,12 +21,10 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nexus.sion.feature.squad.query.dto.request.SquadListRequest;
+import com.nexus.sion.feature.squad.query.dto.response.SquadListResponse;
+import com.nexus.sion.feature.squad.query.service.SquadQueryService;
 
 @WebMvcTest(SquadQueryController.class)
 @AutoConfigureMockMvc
@@ -52,7 +52,7 @@ class SquadQueryControllerTest {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             http.csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+                            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
             return http.build();
         }
     }
@@ -63,18 +63,16 @@ class SquadQueryControllerTest {
         // given
         String projectCode = "ha_1_1";
         SquadListResponse.MemberInfo member = new SquadListResponse.MemberInfo("김개발", "Backend");
-        SquadListResponse squad = new SquadListResponse("ha_1_1_s1", "SQUAD 1", List.of(member), "3개월", "1,000만원");
+        SquadListResponse squad = new SquadListResponse("ha_1_1_s1", "SQUAD 1", List.of(member),
+                        "3개월", "1,000만원");
 
         SquadListRequest request = new SquadListRequest();
         request.setProjectCode(projectCode);
 
-        when(squadQueryService.findSquads(any(SquadListRequest.class)))
-                .thenReturn(List.of(squad));
+        when(squadQueryService.findSquads(any(SquadListRequest.class))).thenReturn(List.of(squad));
 
         mockMvc.perform(get("/api/v1/squads/project/{projectCode}", projectCode)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].squadCode").value("ha_1_1_s1"))
-                .andDo(print());
+                        .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                        .andExpect(jsonPath("$[0].squadCode").value("ha_1_1_s1")).andDo(print());
     }
 }

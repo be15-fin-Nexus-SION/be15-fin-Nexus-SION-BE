@@ -1,15 +1,16 @@
 package com.nexus.sion.feature.squad.query.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.nexus.sion.exception.BusinessException;
+import com.nexus.sion.exception.ErrorCode;
 import com.nexus.sion.feature.squad.query.dto.request.SquadListRequest;
 import com.nexus.sion.feature.squad.query.dto.response.SquadListResponse;
 import com.nexus.sion.feature.squad.query.repository.SquadQueryRepository;
-import com.nexus.sion.exception.BusinessException;
-import com.nexus.sion.exception.ErrorCode;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

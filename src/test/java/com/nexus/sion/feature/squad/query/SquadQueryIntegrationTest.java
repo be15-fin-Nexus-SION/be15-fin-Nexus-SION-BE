@@ -30,12 +30,11 @@ class SquadQueryIntegrationTest {
 
         // when & then
         mockMvc.perform(get("/api/v1/squads/project/{projectCode}", projectCode))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", not(empty())))
-                .andExpect(jsonPath("$[0].squadCode", not(emptyOrNullString())))
-                .andExpect(jsonPath("$[0].squadName", not(emptyOrNullString())))
-                .andExpect(jsonPath("$[0].members", not(empty())))
-                .andExpect(jsonPath("$[0].members[0].name", not(emptyOrNullString())))
-                .andExpect(jsonPath("$[0].members[0].role", not(emptyOrNullString())));
+                        .andExpect(status().isOk()).andExpect(jsonPath("$", not(empty())))
+                        .andExpect(jsonPath("$[0].squadCode", not(emptyOrNullString())))
+                        .andExpect(jsonPath("$[0].squadName", not(emptyOrNullString())))
+                        .andExpect(jsonPath("$[0].members", not(empty())))
+                        .andExpect(jsonPath("$[0].members[0].name", not(emptyOrNullString())))
+                        .andExpect(jsonPath("$[0].members[0].role", not(emptyOrNullString())));
     }
 }

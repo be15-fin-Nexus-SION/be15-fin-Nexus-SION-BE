@@ -1,16 +1,17 @@
 package com.nexus.sion.feature.squad.query.controller;
 
-import com.nexus.sion.feature.squad.query.dto.request.SquadListRequest;
-import com.nexus.sion.feature.squad.query.dto.response.SquadListResponse;
-import com.nexus.sion.feature.squad.query.service.SquadQueryService;
+import java.util.List;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.nexus.sion.feature.squad.query.dto.request.SquadListRequest;
+import com.nexus.sion.feature.squad.query.dto.response.SquadListResponse;
+import com.nexus.sion.feature.squad.query.service.SquadQueryService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/v1/squads")
