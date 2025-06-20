@@ -17,7 +17,10 @@ public enum ErrorCode {
   UNSUPPORTED_JWT("10006", "지원하지 않는 JWT 토큰입니다.", HttpStatus.UNAUTHORIZED),
   EMPTY_JWT("10007", "JWT 클레임이 비어있습니다.", HttpStatus.UNAUTHORIZED),
 
-  INVALID_MEMBER_STATUS("20001", "유효하지 않은 상태값 입니다.", HttpStatus.BAD_REQUEST);
+  INVALID_MEMBER_STATUS("20001", "유효하지 않은 상태값 입니다.", HttpStatus.BAD_REQUEST),
+
+  SQUAD_NOT_FOUND("30001", "해당 프로젝트에 스쿼드가 존재하지 않습니다.", HttpStatus.NOT_FOUND),
+  PROJECT_CODE_INVALID("30002", "유효하지 않은 프로젝트 코드입니다.", HttpStatus.BAD_REQUEST);
 
   private final String code;
   private final String message;
