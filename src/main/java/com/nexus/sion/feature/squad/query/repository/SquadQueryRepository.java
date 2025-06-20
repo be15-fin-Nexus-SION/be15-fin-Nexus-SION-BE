@@ -5,10 +5,12 @@ import static com.example.jooq.generated.tables.ProjectAndJob.PROJECT_AND_JOB;
 import static com.example.jooq.generated.tables.Squad.SQUAD;
 import static com.example.jooq.generated.tables.SquadEmployee.SQUAD_EMPLOYEE;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+import com.example.jooq.generated.enums.SquadOriginType;
 import org.jooq.*;
 import org.springframework.stereotype.Repository;
 
@@ -51,13 +53,24 @@ public class SquadQueryRepository {
             r -> {
               String code = r.get(SQUAD.SQUAD_CODE);
               String name = r.get(SQUAD.TITLE);
+
+              SquadOriginType originType = r.get(SQUAD.ORIGIN_TYPE);
+              boolean isAiRecommended = SquadOriginType.AI.equals(originType);
+
               LocalDate start = r.get(SQUAD.CREATED_AT).toLocalDate();
               LocalDate end = start.plusMonths(r.get(SQUAD.ESTIMATED_DURATION).longValue());
               String period = start + " ~ " + end;
-              String cost = "₩" + r.get(SQUAD.ESTIMATED_COST).toPlainString();
+
+              DecimalFormat decimalFormat = new DecimalFormat("#,###");
+              String cost = "₩" + decimalFormat.format(r.get(SQUAD.ESTIMATED_COST));
 
               return new SquadListResponse(
-                  code, name, memberMap.getOrDefault(code, List.of()), period, cost);
+                  code,
+                      name,
+                      isAiRecommended,
+                      memberMap.getOrDefault(code, List.of()),
+                      period, cost
+              );
             })
         .toList();
   }
