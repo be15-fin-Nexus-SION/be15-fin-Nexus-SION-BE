@@ -39,8 +39,8 @@ public enum ErrorCode {
                                                                                                                                     "유효하지 않은 상태값 입니다.",
                                                                                                                                     HttpStatus.BAD_REQUEST),
 
-  SQUAD_NOT_FOUND("30001", "해당 프로젝트에 스쿼드가 존재하지 않습니다.", HttpStatus.NOT_FOUND),
-  PROJECT_CODE_INVALID("30002", "유효하지 않은 프로젝트 코드입니다.", HttpStatus.BAD_REQUEST);
+  SQUAD_NOT_FOUND("40001", "해당 프로젝트에 스쿼드가 존재하지 않습니다.", HttpStatus.NOT_FOUND),
+  PROJECT_CODE_INVALID("40002", "유효하지 않은 프로젝트 코드입니다.", HttpStatus.BAD_REQUEST);
 
   private final String code;
   private final String message;
