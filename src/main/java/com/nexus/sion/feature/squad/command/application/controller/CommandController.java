@@ -1,4 +1,5 @@
-package com.nexus.sion.feature.squad.command.application.controller;// package com.sixmycat.catchy.feature.game.command.application.controller;
+package com.nexus.sion.feature.squad.command.application.controller; // package
+                                                                     // com.sixmycat.catchy.feature.game.command.application.controller;
 //
 // import io.swagger.v3.oas.annotations.tags.Tag;
 // import lombok.RequiredArgsConstructor;

@@ -1,4 +1,5 @@
-package com.nexus.sion.feature.squad.command.application.service;// package com.sixmycat.catchy.feature.game.command.application.service;
+package com.nexus.sion.feature.squad.command.application.service; // package
+                                                                  // com.sixmycat.catchy.feature.game.command.application.service;
 //
 // import lombok.RequiredArgsConstructor;
 // import org.springframework.stereotype.Service;
