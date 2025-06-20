@@ -1,10 +1,11 @@
 package com.nexus.sion.feature.project.command.domain.aggregate;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.*;
+
+import lombok.*;
 
 @Entity
 @Table(name = "project_fp_summary")
@@ -40,4 +41,3 @@ public class ProjectFpSummary {
     @Column(name = "project_code", nullable = false, length = 30)
     private String projectCode;
 }
-

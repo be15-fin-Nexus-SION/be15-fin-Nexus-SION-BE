@@ -1,10 +1,11 @@
 package com.nexus.sion.feature.project.command.domain.aggregate;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.*;
+
+import lombok.*;
 
 @Entity
 @Table(name = "project")
@@ -21,13 +22,13 @@ public class Project {
     @Column(name = "name", nullable = false, length = 30)
     private String name;
 
-    @Column(name="description", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name="title", nullable = false, length = 30)
+    @Column(name = "title", nullable = false, length = 30)
     private String title;
 
-    @Column(name="budget", nullable = false)
+    @Column(name = "budget", nullable = false)
     private Long budget;
 
     @Column(name = "start_date", nullable = false)
@@ -65,4 +66,3 @@ public class Project {
         WAITING, IN_PROGRESS, COMPLETE, INCOMPLETE
     }
 }
-
