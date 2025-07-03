@@ -6,4 +6,6 @@ import com.nexus.sion.feature.project.command.domain.aggregate.Project;
 
 public interface ProjectCommandRepository extends JpaRepository<Project, String> {
   boolean existsByProjectCode(String projectCode);
+
+  boolean existsByClientCode(String clientCode);
 }

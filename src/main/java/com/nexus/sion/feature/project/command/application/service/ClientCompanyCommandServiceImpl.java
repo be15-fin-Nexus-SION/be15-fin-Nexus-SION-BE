@@ -1,5 +1,6 @@
 package com.nexus.sion.feature.project.command.application.service;
 
+import com.nexus.sion.feature.project.command.domain.repository.ProjectCommandRepository;
 import jakarta.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -23,6 +24,7 @@ public class ClientCompanyCommandServiceImpl implements ClientCompanyCommandServ
 
   private final ModelMapper modelMapper;
   private final ClientCompanyRepository clientCompanyRepository;
+  private final ProjectCommandRepository projectCommandRepository;
 
   @Transactional
   @Override
@@ -69,6 +71,11 @@ public class ClientCompanyCommandServiceImpl implements ClientCompanyCommandServ
     // 기존에 존재하는 고객사인지 확인
     if (!clientCompanyRepository.existsById(clientCode)) {
       throw new BusinessException(ErrorCode.CLIENT_COMPANY_NOT_FOUND);
+    }
+
+    // 연결된 고객사가 프로젝트 테이블에 연결되어있으면 예외 처리
+    if (projectCommandRepository.existsByClientCode(clientCode)) {
+      throw new BusinessException(ErrorCode.CONNECTED_PROJECT_EXISTS);
     }
 
     // 고객사 삭제
