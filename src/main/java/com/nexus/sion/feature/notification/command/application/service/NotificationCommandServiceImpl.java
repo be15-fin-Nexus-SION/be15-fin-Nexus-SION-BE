@@ -1,11 +1,9 @@
 package com.nexus.sion.feature.notification.command.application.service;
 
+import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class NotificationCommandServiceImpl implements NotificationCommandService {
-
-}
+public class NotificationCommandServiceImpl implements NotificationCommandService {}

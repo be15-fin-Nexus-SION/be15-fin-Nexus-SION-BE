@@ -35,15 +35,14 @@ public class Notification extends BaseTimeEntity {
   @Column(name = "receiver_id", length = 30, nullable = false)
   private String receiverId;
 
-  /**
-   * 테스트용 팩토리 메서드
-   */
-  public static Notification of(NotificationType notificationType, String message, String receiverId) {
+  /** 테스트용 팩토리 메서드 */
+  public static Notification of(
+      NotificationType notificationType, String message, String receiverId) {
     return Notification.builder()
-            .notificationType(notificationType)
-            .message(message)
-            .receiverId(receiverId)
-            .isRead(false)
-            .build();
+        .notificationType(notificationType)
+        .message(message)
+        .receiverId(receiverId)
+        .isRead(false)
+        .build();
   }
 }

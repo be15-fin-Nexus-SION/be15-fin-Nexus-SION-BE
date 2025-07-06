@@ -2,10 +2,10 @@ package com.nexus.sion.feature.notification.query.service;
 
 import java.util.List;
 
-import com.nexus.sion.feature.techstack.query.service.TechStackQueryService;
 import org.springframework.stereotype.Service;
 
 import com.nexus.sion.feature.techstack.query.repository.TechStackQueryRepository;
+import com.nexus.sion.feature.techstack.query.service.TechStackQueryService;
 
 import lombok.RequiredArgsConstructor;
 
