@@ -21,6 +21,7 @@ public class Notification extends BaseTimeEntity {
   private Long notificationId;
 
   @Column(name = "notification_type", length = 50, nullable = false)
+  @Enumerated(EnumType.STRING)
   private NotificationType notificationType;
 
   @Column(name = "linked_content_id", length = 30)
