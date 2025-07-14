@@ -12,11 +12,16 @@ import com.nexus.sion.exception.ErrorCode;
 import com.nexus.sion.feature.member.command.application.dto.request.CertificateRejectRequest;
 import com.nexus.sion.feature.member.command.application.dto.request.UserCertificateHistoryRequest;
 import com.nexus.sion.feature.member.command.domain.aggregate.entity.Certificate;
+import com.nexus.sion.feature.member.command.domain.aggregate.entity.Member;
 import com.nexus.sion.feature.member.command.domain.aggregate.entity.UserCertificateHistory;
 import com.nexus.sion.feature.member.command.domain.aggregate.enums.CertificateStatus;
+import com.nexus.sion.feature.member.command.domain.aggregate.enums.MemberRole;
 import com.nexus.sion.feature.member.command.domain.repository.CertificateRepository;
+import com.nexus.sion.feature.member.command.domain.repository.MemberRepository;
 import com.nexus.sion.feature.member.command.domain.repository.UserCertificateHistoryRepository;
 import com.nexus.sion.feature.member.query.dto.response.UserCertificateHistoryResponse;
+import com.nexus.sion.feature.notification.command.application.service.NotificationCommandService;
+import com.nexus.sion.feature.notification.command.domain.aggregate.NotificationType;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,6 +32,8 @@ public class UserCertificateHistoryServiceImpl implements UserCertificateHistory
   private final UserCertificateHistoryRepository userCertificateHistoryRepository;
   private final CertificateRepository certificateRepository;
   private final DocumentS3Service documentS3Service;
+  private final NotificationCommandService notificationCommandService;
+  private final MemberRepository memberRepository;
 
   @Override
   @Transactional
@@ -51,6 +58,20 @@ public class UserCertificateHistoryServiceImpl implements UserCertificateHistory
             .build();
 
     userCertificateHistoryRepository.save(history);
+
+    try {
+      List<Member> adminMembers = memberRepository.findAllByRole(MemberRole.ADMIN);
+      for (Member admin : adminMembers) {
+        notificationCommandService.createAndSendNotification(
+            employeeId,
+            admin.getEmployeeIdentificationNumber(),
+            null,
+            NotificationType.CERTIFICATION_APPROVAL_REQUEST,
+            String.valueOf(history.getId()));
+      }
+    } catch (Exception e) {
+      System.err.println("관리자 알림 전송 실패: " + e.getMessage());
+    }
   }
 
   @Override
